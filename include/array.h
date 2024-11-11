@@ -23,7 +23,7 @@ typedef struct Array
 } Array;
 
 
-Array* ArrayCreate(size_t initial_size);
+Array* ArrayCreate(size_t initial_size, ArrayType type);
 
 void ArrayDestroy(Array* array);
 
