@@ -5,6 +5,15 @@
 
 #define ARRAY_INIT_SIZE 10
 
+typedef enum ArrayType
+{
+    INT,
+    STRING,
+    DOUBLE,
+    FLOAT
+
+} ArrayType;
+
 typedef struct Array
 {
     void* data;
