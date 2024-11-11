@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+#define ARRAY_INIT_SIZE 10
+
 typedef struct Array
 {
     void* data;
@@ -10,6 +12,12 @@ typedef struct Array
     size_t capacity;
 
 } Array;
+
+
+Array* ArrayCreate(size_t initial_size);
+
+void ArrayDestroy(Array* array);
+
 
 
 #endif // !C_ARRAY_H
