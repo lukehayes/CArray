@@ -62,3 +62,41 @@ void ArrayDestroy(Array* array)
     array = NULL;
 }
 
+void ArrayPrint(Array* array, ArrayType type)
+{
+    switch (type) {
+        case ARR_INT:
+            for (int i = 0; i <=array->capacity - 1; i++) 
+            {
+                printf("[%i] = %i\n", i, *(int*)&array->data[i]);
+            }
+            break;
+
+        case ARR_STRING:
+            for (int i = 0; i <=array->capacity - 1; i++) 
+            {
+                printf("[%i] = %s\n", i, (char*)&array->data[i]);
+            }
+            break;
+
+        case ARR_DOUBLE:
+            for (int i = 0; i <=array->capacity - 1; i++) 
+            {
+                printf("[%i] = %lf\n", i, *(double*)&array->data[i]);
+            }
+            break;
+
+        case ARR_FLOAT:
+            for (int i = 0; i <=array->capacity - 1; i++) 
+            {
+                printf("[%i] = %f\n", i, *(float*)&array->data[i]);
+            }
+            break;
+
+        default:
+            printf("INIT DEFAULT\n");
+            printf("Default Array Init\n");
+            break;
+    }
+}
+

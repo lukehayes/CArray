@@ -27,6 +27,7 @@ Array* ArrayCreate(size_t initial_size, ArrayType type);
 
 void ArrayDestroy(Array* array);
 
+void ArrayPrint(Array* array, ArrayType type);
 
 
 #endif // !C_ARRAY_H
