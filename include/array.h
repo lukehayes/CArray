@@ -7,10 +7,10 @@
 
 typedef enum ArrayType
 {
-    INT,
-    STRING,
-    DOUBLE,
-    FLOAT
+    ARR_INT,
+    ARR_STRING,
+    ARR_DOUBLE,
+    ARR_FLOAT
 
 } ArrayType;
 
