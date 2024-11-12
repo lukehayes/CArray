@@ -4,31 +4,23 @@
 #include <stdio.h>
 #include <string.h>
 
-void* _ArrayInit(size_t size, ArrayType type)
+void* _ArrayInit(Array* array, ArrayType type)
 {
     void* data;
 
     switch (type) {
         case ARR_INT:
             printf("INIT INT\n");
-            data = malloc(sizeof(int) * size);
-            memset(data, 1, sizeof(int) * size);
+            array->type = type;
+            data = malloc(sizeof(int) * array->capacity);
+            memset(data, 0, sizeof(int) * array->capacity);
             break;
 
         case ARR_STRING:
             printf("INIT STRING\n");
-            data = malloc(sizeof(char) * size);
+            array->type = type;
+            data = malloc(sizeof(char) * array->capacity);
             memset(data, '\0', 1);
-            break;
-
-        case ARR_DOUBLE:
-            printf("INIT DOUBLE\n");
-            data = malloc(sizeof(double) * size);
-            break;
-
-        case ARR_FLOAT:
-            printf("INIT FLOAT\n");
-            data = malloc(sizeof(float) * size);
             break;
 
         default:
@@ -47,8 +39,16 @@ Array* ArrayCreate(size_t initial_size, ArrayType type)
 
     array->capacity = initial_size;
     array->size = 0;
+    array->type = type;
 
-    array->data = _ArrayInit(initial_size, type);
+    array->data = malloc(sizeof(int) * array->capacity - 1);
+    memcpy(array->data, array->data, sizeof(int) * initial_size);
+
+    int* p1 = &array->data[0];
+
+    *p1 = 567;
+    
+    printf("Data p1 %i \n", *p1);
 
     return array;
 }
@@ -76,20 +76,6 @@ void ArrayPrint(Array* array, ArrayType type)
             for (int i = 0; i <=array->capacity - 1; i++) 
             {
                 printf("[%i] = %s\n", i, (char*)&array->data[i]);
-            }
-            break;
-
-        case ARR_DOUBLE:
-            for (int i = 0; i <=array->capacity - 1; i++) 
-            {
-                printf("[%i] = %lf\n", i, *(double*)&array->data[i]);
-            }
-            break;
-
-        case ARR_FLOAT:
-            for (int i = 0; i <=array->capacity - 1; i++) 
-            {
-                printf("[%i] = %f\n", i, *(float*)&array->data[i]);
             }
             break;
 
