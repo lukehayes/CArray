@@ -16,9 +16,10 @@ typedef enum ArrayType
 
 typedef struct Array
 {
-    void* data;
     size_t size;
     size_t capacity;
+    ArrayType type;
+    void* data;
 
 } Array;
 
